@@ -48,7 +48,7 @@ map kitty_mod+space>.>c launch --hold sh -c "if command -v cht.sh >/dev/null 2>&
 ## ignore.sh
 map kitty_mod+space>.>i launch --cwd=current --hold sh -c "if command -v ignore.sh >/dev/null 2>&1; then ignore.sh; else echo 'ignore.sh not found'; fi"
 
-## ignore.sh
+## license.sh
 map kitty_mod+space>.>l launch --cwd=current --hold sh -c "if command -v license.sh >/dev/null 2>&1; then license.sh; else echo 'license.sh not found'; fi"
 
 ## tldr.sh

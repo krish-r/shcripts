@@ -2,8 +2,9 @@
 
 fzf_bin="fzf"
 fzf_bin_alt="$HOME/Apps/.fzf/bin/fzf"
+tldr_bin="tldr"
 cargo_binaries="$HOME/.cargo/bin"
-tldr_bin="$cargo_binaries/tldr"
+tldr_bin_alt="$cargo_binaries/tldr"
 
 if ! command -v "$fzf_bin" &>/dev/null; then
 	# Check for fzf binary in alternate directory
@@ -15,8 +16,12 @@ if ! command -v "$fzf_bin" &>/dev/null; then
 fi
 
 if ! command -v "$tldr_bin" &>/dev/null; then
-	printf "tldr not found under %s\n" "$cargo_binaries"
-	exit 0
+	printf "tldr not found under PATH. Searching under cargo binary directory.\n"
+	tldr_bin="$tldr_bin_alt"
+	if ! command -v "$tldr_bin" &>/dev/null; then
+		printf "tldr not found under %s\n" "$cargo_binaries"
+		exit 0
+	fi
 fi
 
 _check_if_empty() {
